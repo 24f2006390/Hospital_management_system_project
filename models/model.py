@@ -5,7 +5,7 @@ from config import db
 class Department(db.Model):
     __tablename__ = "departments"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True )
     name = db.Column(db.String(100), unique=True, nullable=False)
     description = db.Column(db.Text)
     num_doctors = db.Column(db.Integer, default=0)
