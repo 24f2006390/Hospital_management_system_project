@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+
+{% block body %}
+<form>
+
+    <input type="text" name="user_name"> <br>
+    First Name:
+    <input type="text" name="first_name">
+    Last Name :
+    <input type="text" name="last_name">
+    <input type="submit" id="submit">
+</form>
+<p id="status"></p>
+
+{% endblock %}
+  
+
+{% block script %}
+
+<script src="../Static/js/patient_login.js">
+import { send_form_data } from  '../Static/js/send_form_data.js'
+const form = document.querySelector("form");
+const Status = document.querySelector("#status");
+send_form_data( form , status , '/patient/register')
+</script>
+{% endblock %}
+

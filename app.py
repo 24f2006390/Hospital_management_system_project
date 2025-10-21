@@ -2,7 +2,8 @@ from flask import Flask
 from config import config , db
 import models.model
 from routes import patient_bp 
-from routes import admin_bp 
+from routes import admin_bp  
+from routes import home_bp , department_bp
 import logging
 
 app= Flask(__name__)
@@ -21,6 +22,10 @@ def create_app():
     # Registering Blueprints
     app.register_blueprint(patient_bp) ; 
     app.register_blueprint(admin_bp)
+    app.register_blueprint(home_bp)
+    app.register_blueprint(department_bp)
+
+
 
 if __name__ == '__main__':
     app.logger.info("App Started")

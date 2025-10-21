@@ -9,7 +9,7 @@ class Department(db.Model):
     name = db.Column(db.String(100), unique=True, nullable=False)
     description = db.Column(db.Text)
     num_doctors = db.Column(db.Integer, default=0)
-    contact_email = db.Column(db.String(120))
+    email_id = db.Column(db.String(120))
 
     # Relationships
     doctors = db.relationship("Doctor", back_populates="department")
@@ -22,12 +22,14 @@ class Doctor(db.Model):
     __tablename__ = "doctors"
 
     id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(100) , unique = True , nullable=False) 
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.Text)
     years_of_experience = db.Column(db.Integer)
     specialization = db.Column(db.String(100))
     qualification = db.Column(db.String(100))
+    email_id = db.Column(db.String(100) , unique=True) 
 
     department_id = db.Column(db.Integer, db.ForeignKey("departments.id"))
     department = db.relationship("Department", back_populates="doctors")
@@ -43,9 +45,11 @@ class Patient(db.Model):
     __tablename__ = "patients"
 
     id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(100) , unique = True , nullable=False) 
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     gender = db.Column(db.String(10))
+    email_id = db.Column(db.String(100) ,unique=True)
 
     # Relationships
     appointments = db.relationship("Appointment", back_populates="patient")

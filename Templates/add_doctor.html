@@ -1,0 +1,34 @@
+
+{% block body %}
+<form>
+    User name
+    <input type="text" name="user_name">
+    First Name:
+    <input type="text" name="first_name">
+    Last Name :
+    <input type="text" name="last_name">
+    <input type="text" name ='department' > 
+    department_Name
+    <input type="submit" id="submit">
+</form>
+Status : 
+<p id="status"></p>
+
+{% endblock %}
+
+  
+
+
+
+{% block script %}
+
+<script type="module" >
+import { send_form_data } from  '/static/js/send_form_data.js'
+const form = document.querySelector("form");
+const status = document.querySelector("#status");
+console.log(status)
+console.log(status.textContent)
+send_form_data( form , status , '/admin/add/doctor')
+</script>
+{% endblock %}
+

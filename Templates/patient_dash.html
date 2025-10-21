@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Patient This is your dashboard
-</body>
-</html>
+{% block body %}
+
+       <h2>Patient dashboard </h2>
+        <h2> User Name : {{user_name }}</h2>
+        <ol>
+        {% for depart in departments %}
+            <li>{{ depart.name }} -- {{depart.description}} -- {{depart.email_id}}  </li>
+            <a href="/department/{{depart.name}}"> <button> View Details </button></a>
+            
+        {% endfor %}
+
+        </ol>
+
+{% endblock %}

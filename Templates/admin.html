@@ -1,23 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    
-    , initial-scale=1.0">
-    <title>Admin dashboard</title>
-</head>
-<body>
+
+
+
+
+
+{% block body %}
     <a href="/admin/add/department">
         <button> add department </button>
     </a>
+    
     <ol>
         {% for depart in departments %}
-            <li>{{ depart.name }} -- {{depart.description}} -- {{depart.contact_email}} </li>
+        <li>{{ depart.name }} -- {{depart.description}} -- {{depart.email_id}} </li>
         {% endfor %}
-
+    
     </ol>
     
+    <a href="/admin/add/doctor">
+        <button> add Doctor </button>
+    </a>
+    <ol>
+        {% for doctor in doctors %}
+        <li>{{ doctor.first_name }} -- {{doctor.last_name}} </li>
+        {% endfor %}
+    
+    </ol>
+    <h2> Registered Patients</h2>
+    <ol>
+        {% for patient in patients %}
+        <li>{{ patient.first_name }} -- {{patient.last_name}} </li>
+        {% endfor %}
+    
+    </ol>
 
-</body>
-</html>
+{% endblock %}

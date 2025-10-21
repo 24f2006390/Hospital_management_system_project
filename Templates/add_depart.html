@@ -1,57 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form >
-      <label for="name">Name</label><br />
-      <input type="text" name="name" /> <br />
-      <label for="description">Description</label><br />
-      <input type="text" name="description" /><br />
-      Contact Email : <br />
-      <input type="email" name="email" />
-      <input type="submit">
-      <p id="status"></p>
-      <p id="status2"> </p>
-    </form>
+{% extends "base.html" %} 
 
-    <script>
-      const form = document.querySelector('form');
-      const status= document.querySelector('#status') ;
+{% block body %}
+<form>
+  <label for="name">Name</label><br />
+  <input type="text" name="name" /> <br />
+  <label for="description">Description</label><br />
+  <input type="text" name="description" /><br />
+  Contact Email : <br />
+  <input type="email" name="email" />
+  <input type="submit" />
+  <p id="status"></p>
+  <p id="status2"></p>
+</form>
 
-      form.addEventListener('submit' , async (e) =>{
-          e.preventDefault( )  ;
-          status.textContent = "⏳ Sending data...";
-        console.log("sending data") ; 
-          const form_data= new FormData(form) ;
-          const object = Object.fromEntries(form_data.entries())
-          const json_data = JSON.stringify(object)
-          let  response;
-          try{
-              response = await fetch('/admin/add/department' , {
-                  method :'POST' ,
-                  headers:{
-                    'Content-Type':'Application/json'
-                  } , 
-                  body :json_data 
-              })
-         
-              if (!response.ok) throw new Error("Network Error") ; 
-             
-              status.textContent = "✅ Form submitted successfully (no page reload)";
-
-          }
-          catch(error){
-          
-            status.textContent = "❌ Error submitting form";
-            status2.textContent= response.statusText ;
-          } ; 
+{% endblock %}
 
 
-      })
-    </script>
-  </body>
-</html>
+{% block script %}
+
+<script src="../Static/js/patient_login.js">
+import { send_form_data } from  '../Static/js/send_form_data.js'
+const form = document.querySelector("form");
+const Status = document.querySelector("#status");
+send_form_data( form , status ,'/admin/add/department')
+</script>
+{% endblock %}
