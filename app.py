@@ -1,8 +1,8 @@
 from flask import Flask 
 from config import config , db
-import models.model
-from routes import patient_bp 
+from routes import patient_bp ,doctor_bp
 from routes import admin_bp  
+
 from routes import home_bp , department_bp
 import logging
 
@@ -24,6 +24,7 @@ def create_app():
     app.register_blueprint(admin_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(department_bp)
+    app.register_blueprint(doctor_bp) ; 
 
 
 

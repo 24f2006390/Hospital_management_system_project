@@ -2,13 +2,23 @@
 
 {% block body %}
 <form>
-  <label for="name">Name</label><br />
-  <input type="text" name="name" /> <br />
-  <label for="description">Description</label><br />
-  <input type="text" name="description" /><br />
-  Contact Email : <br />
-  <input type="email" name="email" />
-  <input type="submit" />
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" name="name" /> 
+
+  </div>
+  <div class="mb-3">
+    <label for="description">Description</label>
+    <input type="text" name="description" class="form-control"  />
+  </div>
+
+  <div class="mb-3">
+    <label for="" class="form-label">Contact Email </label>
+    <input type="email" name="email" class="form-control" />
+  </div>
+
+
+  <input type="submit" class="btn btn-danger" />
   <p id="status"></p>
   <p id="status2"></p>
 </form>
@@ -18,10 +28,10 @@
 
 {% block script %}
 
-<script src="../Static/js/patient_login.js">
-import { send_form_data } from  '../Static/js/send_form_data.js'
+<script type="module">
+import { send_form_data } from  '/static/js/send_form_data.js'
 const form = document.querySelector("form");
-const Status = document.querySelector("#status");
+const status = document.querySelector("#status");
 send_form_data( form , status ,'/admin/add/department')
 </script>
 {% endblock %}

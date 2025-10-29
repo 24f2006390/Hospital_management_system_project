@@ -7,9 +7,9 @@
 
   <form >
     <div  class="m-3">
-
+        <h3 class="text-center"> Doctor Login </h3>
       <label for="name" class="form-label"> User Name</label>
-      <input type="text" name="user_name"  class="form-control" id="name"/>
+      <input type="text" name="doctor_user_name"  class="form-control" id="name"/>
     </div>
     <button type="submit" class="btn btn-danger"> Submit </button>
   </form>
@@ -24,7 +24,7 @@
 import { send_form_data } from  '/static/js/send_form_data.js'
 const form = document.querySelector("form");
 const Status = document.querySelector("#status");
-send_form_data( form , Status , '/patient/login')
+send_form_data( form , Status , '/doctor/login')
 </script>
 {% endblock %}
 

@@ -11,7 +11,11 @@
   {% for doctor in doctors %}
   <li>
     {{ doctor.first_name }} --{{ doctor.last_name}} ---{{doctor.years_of_experience}} 
-    ---- <button> Book</button>
+    ---- 
+    <a href="/department/{{doctor.user_name}}/appointments">
+
+      <button > Book</button>
+    </a>
   </li>
   {% endfor %}
 </ol>

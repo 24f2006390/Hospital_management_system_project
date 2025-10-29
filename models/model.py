@@ -110,6 +110,14 @@ class PatientVisit(db.Model):
         return f"<PatientVisit {self.visit_no}>"
 
 
+class Doctor_availability(db.Model): 
+    __tablename= 'doctor_availability' 
+    id = db.Column( db.Integer , primary_key =True ) 
+    doctor_id = db.Column (db.Integer, nullable=False) 
+    date = db.Column( db.Date , nullable = False) 
+    slot_no = db.Column( db.BigInteger , nullable=False ) 
+
+
 class Appointment(db.Model):
     __tablename__ = "appointments"
 
@@ -117,9 +125,11 @@ class Appointment(db.Model):
     doctor_id = db.Column(db.Integer, db.ForeignKey("doctors.id"))
     patient_id = db.Column(db.Integer, db.ForeignKey("patients.id"))
     department_id = db.Column(db.Integer, db.ForeignKey("departments.id"))
+    
 
-    date_time = db.Column(db.DateTime, default=datetime.utcnow)
-    reason = db.Column(db.Text)
+    date = db.Column(db.Date , nullable=False)
+    slot_no = db.Column( db.Integer , nullable=False )  
+
     is_cancelled = db.Column(db.Boolean, default=False)
     is_completed = db.Column(db.Boolean, default=False)
 

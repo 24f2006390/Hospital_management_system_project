@@ -26,8 +26,7 @@ Status :
 import { send_form_data } from  '/static/js/send_form_data.js'
 const form = document.querySelector("form");
 const status = document.querySelector("#status");
-console.log(status)
-console.log(status.textContent)
+
 send_form_data( form , status , '/admin/add/doctor')
 </script>
 {% endblock %}

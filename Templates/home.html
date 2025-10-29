@@ -1,5 +1,18 @@
+{% extends 'base.html' %}
+
 {% block body %}
-<a href="/patient/register">
-    <button> Patient login</button>
-</a>
+<div class="container m-2">
+
+    <a href="/patient/register" >
+        <button class="btn btn-danger"> Patient login</button>
+    </a>
+</div>
+
+<div class="container m-2">
+
+    <a href="/doctor/login" >
+        <button class="btn btn-success"> Doctor login</button>
+    </a>
+</div>
+
 {% endblock %}
